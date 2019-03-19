@@ -59,16 +59,19 @@ uint8_t OLED_Timer = 0;
 //This handles messages published from the MQTT server when subscribed
 void receivedFromCloud(uint8_t *topic, uint8_t *payload)
 {
-    char *toggleToken = "\"toggle\":";
-    char *subString;
+    char *pT, c;
+	LED_flashRed();
+	debug_printer(SEVERITY_NONE, LEVEL_NORMAL, "payload: %s", payload);
 
-    if ((subString = strstr((char*)payload, toggleToken)))
-    {
-        LED_holdYellowOn( subString[strlen(toggleToken)] == '1' );
+    if ((pT = strstr((char*)payload, "text1\":\""))){
+        pT+=8;
+        OLED_Clear();
+        OLED_SetScale(1, 2);
+        while((c = *pT++) && (c!='"')) {
+            OLED_Putchar(c);
+        }
+        OLED_Timer = OLED_TIMEOUT;
     }
-
-
-    debug_printer(SEVERITY_NONE, LEVEL_NORMAL, "topic: %s", topic);
     debug_printer(SEVERITY_NONE, LEVEL_NORMAL, "payload: %s", payload);
 }
 
