@@ -45,13 +45,16 @@
 /**
   Section: Included Files
 */
-#include "mcc_generated_files/system.h"
 #include "stdio.h"
 #include "string.h"
 #include "stdlib.h"
 #include "mcc_generated_files/led.h"
+#include "mcc_generated_files/system.h"
 #include "mcc_generated_files/sensors_handling.h"
 #include "mcc_generated_files/cloud/cloud_service.h"
+#include "mcc_generated_files/application_manager.h"
+#include "mcc_generated_files/drivers/spi_master.h"
+
 #include "mcc_generated_files/debug_print.h"
 #include "oled.h"
 
@@ -76,15 +79,14 @@ void receivedFromCloud(uint8_t *topic, uint8_t *payload)
     debug_printer(SEVERITY_NONE, LEVEL_NORMAL, "payload: %s", payload);
 }
 
-// This will get called every 1 second only while we have a valid Cloud connection
+// This will get called every CFG_SEND_INTERVAL only while we have a valid Cloud connection
 void sendToCloud(void)
 {
    static char json[70];
 
-   // This part runs every CFG_SEND_INTERVAL seconds
    int rawTemperature = SENSORS_getTempValue();
    int light = SENSORS_getLightValue();
-   int len = sprintf(json, "{\"Light\":%d,\"Temp\":\"%d.%02d\"}", light,rawTemperature/100,abs(rawTemperature)%100);
+   int len = sprintf(json, "{\"Light\":%d,\"Temp\":%d.%02d}", light,rawTemperature/100,abs(rawTemperature)%100);
 
    if (len >0) {
       CLOUD_publishData((uint8_t*)json, len);
@@ -92,18 +94,14 @@ void sendToCloud(void)
    }
 }
 
-#include "mcc_generated_files/application_manager.h"
-#include "mcc_generated_files/drivers/spi_master.h"
 
 /*
                          Main application
  */
 int main(void)
 {
-    // initialize the device
     SYSTEM_Initialize();
     application_init();
-    puts("initialized");
 
     OLED_init();
     OLED_Clear();
@@ -113,13 +111,9 @@ int main(void)
 
     while (1)
     {
-        // Add your application code
         runScheduler();
     }
 
     return 1;
 }
-/**
- End of File
-*/
 
