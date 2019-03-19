@@ -37,7 +37,7 @@ inline void spi2_close(void)
 typedef struct { uint16_t con1; uint16_t brg; uint8_t operation;} spi2_configuration_t;
 static const spi2_configuration_t spi2_configuration[] = {   
     { 0x0120, 0x0000, 0 },
-    { 0x0120, 0x0001, 0 }
+    { 0x0120, 0x003F, 0 }
 };
 
 bool spi2_open(spi2_modes spiUniqueConfiguration)
