@@ -61,7 +61,6 @@ void receivedFromCloud(uint8_t *topic, uint8_t *payload)
 {
     char *pT, c;
 	LED_flashRed();
-	debug_printer(SEVERITY_NONE, LEVEL_NORMAL, "payload: %s", payload);
 
     if ((pT = strstr((char*)payload, "text1\":\""))){
         pT+=8;
@@ -72,7 +71,9 @@ void receivedFromCloud(uint8_t *topic, uint8_t *payload)
         }
         OLED_Timer = OLED_TIMEOUT;
     }
-    debug_printer(SEVERITY_NONE, LEVEL_NORMAL, "payload: %s", payload);
+    else {
+        debug_printer(SEVERITY_NONE, LEVEL_NORMAL, "payload: %s", payload);
+    }
 }
 
 // This will get called every CFG_SEND_INTERVAL only while we have a valid Cloud connection
@@ -88,6 +89,13 @@ void sendToCloud(void)
       CLOUD_publishData((uint8_t*)json, len);
       LED_flashYellow();
    }
+
+   if (OLED_Timer > 0) {
+        OLED_Timer--;
+        if (OLED_Timer == 0){
+            OLED_Clear();
+        }
+    }
 }
 
 #include "mcc_generated_files/application_manager.h"
