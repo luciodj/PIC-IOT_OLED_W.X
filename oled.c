@@ -5,11 +5,9 @@
 #include "oled.h"
 #include "mcc_generated_files/spi2_driver.h"
 #include "mcc_generated_files/delay.h"
+#include "mcc_generated_files/drivers/spi_master.h"
 
 // adapter for PIC-IOT WG board mikroBUS socket
-#define OLED_CS_set_dir()   //PORTC_set_pin_dir(3, PORT_DIR_OUT); // CS
-#define	OLED_DC_set_dir()   //PORTD_set_pin_dir(4, PORT_DIR_OUT); // PWM
-#define OLED_RST_set_dir()  //PORTA_set_pin_dir(0, PORT_DIR_OUT); // RST
 #define OLED_CS(state)      LATAbits.LATA0 = state // CS
 #define OLED_DC(state)      LATCbits.LATC6 = state // PWM
 #define OLED_RST(state)     LATBbits.LATB15 = state // RST
@@ -32,12 +30,10 @@ void OLED_Data(uint8_t temp){
 void OLED_init(void)
 {
     OLED_RST(false);
-    OLED_RST_set_dir();
     OLED_DC(true);
-    OLED_DC_set_dir();
     OLED_CS(true);
-    OLED_CS_set_dir();
     DELAY_milliseconds(1000);
+    spiMaster[OLED].spiOpen();
     OLED_RST(true);
     DELAY_milliseconds(1000);
     OLED_Command(SSD1306_DISPLAYOFF);             //0xAE  Set OLED Display Off

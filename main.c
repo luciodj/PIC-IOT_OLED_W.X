@@ -93,6 +93,7 @@ void sendToCloud(void)
 }
 
 #include "mcc_generated_files/application_manager.h"
+#include "mcc_generated_files/drivers/spi_master.h"
 
 /*
                          Main application
@@ -102,12 +103,13 @@ int main(void)
     // initialize the device
     SYSTEM_Initialize();
     application_init();
+    puts("initialized");
 
     OLED_init();
     OLED_Clear();
     OLED_SetScale(2, 4); OLED_Puts(0,0, "PIC-IoT");
     OLED_Timer = OLED_TIMEOUT;
-
+    puts("oled init");
 
     while (1)
     {

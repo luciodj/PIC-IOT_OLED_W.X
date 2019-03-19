@@ -1736,6 +1736,10 @@
          <value>1</value>
       </entry>
       <entry>
+         <key class="com.microchip.mcc.core.tokenManager.PropertyTokenKey" moduleName="SPIMASTER" name="spiConfigurations%1%dataInputSample"/>
+         <value>MIDDLE</value>
+      </entry>
+      <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="Pin Module" registerAlias="IOCNB" settingAlias="IOCNB2" alias="enabled"/>
          <value>1</value>
       </entry>
@@ -2214,6 +2218,10 @@
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="ADC1" registerAlias="ADCTMENL" settingAlias="CTMEN1"/>
          <value>disabled</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.PropertyTokenKey" moduleName="SPIMASTER" name="spiConfigurations%1%selectedModule"/>
+         <value>SPI2-Foundation Services Library</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="Pin Module" registerAlias="IOCNB" settingAlias="IOCNB6" alias="disabled"/>
@@ -2906,6 +2914,10 @@
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="RC7"/>
          <value>disabled</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.PropertyTokenKey" moduleName="SPIMASTER" name="spiConfigurations%1%speed"/>
+         <value>8000000</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="ADC1" registerAlias="ADCON2" settingAlias="CSCNA" alias="enabled"/>
@@ -6101,7 +6113,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="SPIMASTER" name="SPIMASTERCustomCount"/>
-         <value>0</value>
+         <value>1</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="ADC1" registerAlias="ADCON3" settingAlias="SAMC" alias="11"/>
@@ -8361,7 +8373,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="SPIMASTER" name="validate"/>
-         <value>0.9144276907667497</value>
+         <value>0.2549528832194229</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="ADC1" registerAlias="ADCON1" settingAlias="FORM" alias="Absolute fractional result, unsigned, left-justified"/>
@@ -10905,7 +10917,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="Pin Module" registerAlias="LATA"/>
-         <value>0</value>
+         <value>1</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="SPI1" registerAlias="SPICON1L" settingAlias="SMP" alias="Middle"/>
@@ -11125,7 +11137,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="Pin Module" registerAlias="LATA" settingAlias="LATA0"/>
-         <value>clear</value>
+         <value>set</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="Pin Module" registerAlias="IOCPDA" settingAlias="IOCPDA10" alias="enabled"/>
@@ -11893,7 +11905,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="Custom Name RC6"/>
-         <value>OLED_DS</value>
+         <value>OLED_DC</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="Pin Module" registerAlias="IOCNB" settingAlias="IOCNB13"/>
@@ -12440,6 +12452,10 @@
          <value>0</value>
       </entry>
       <entry>
+         <key class="com.microchip.mcc.core.tokenManager.PropertyTokenKey" moduleName="SPIMASTER" name="spiConfigurations%1%mode"/>
+         <value>MODE0</value>
+      </entry>
+      <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="SPI1" registerAlias="SPICON1H" settingAlias="MSSEN" alias="disabled"/>
          <value>0</value>
       </entry>
@@ -12892,6 +12908,10 @@
          <value>1</value>
       </entry>
       <entry>
+         <key class="com.microchip.mcc.core.tokenManager.PropertyTokenKey" moduleName="SPIMASTER" name="spiConfigurations%1%name"/>
+         <value>OLED</value>
+      </entry>
+      <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="INTERNAL OSCILLATOR" registerAlias="PMD1" settingAlias="U2MD" alias="enabled"/>
          <value>0</value>
       </entry>
@@ -13035,11 +13055,11 @@
       </entry>
       <entry>
          <file>mcc_generated_files/pin_manager.c</file>
-         <hash>8b4ab7b6ea00637f234f7e6533eb707247dd53db7094fa66b4f6261125a58609</hash>
+         <hash>88e7dc914ff916d4675d45378b274d807f72c90612ad2a9767b1c8bf050d0775</hash>
       </entry>
       <entry>
          <file>mcc_generated_files/spi2_driver.c</file>
-         <hash>6b310f400f8710747fb5fbce29ea1a86a19eddda36e3915c4fe3c949836e88be</hash>
+         <hash>8e5b6f547dff1a8922411800d8c7e54179f2c6c1746170eb4007eb23b506ec01</hash>
       </entry>
       <entry>
          <file>mcc_generated_files/winc/spi_flash/source/spi_flash.c</file>
@@ -13143,7 +13163,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files/pin_manager.h</file>
-         <hash>7fc7bd443468f58c35788b979292fb94a31eaf409fae93c330f248ecad940962</hash>
+         <hash>42db3d940c99effceddc728e930c6b23a9b6a81766bb9eb5ee0701b6a0d49948</hash>
       </entry>
       <entry>
          <file>mcc_generated_files/cryptoauthlib/lib/basic/atca_basic_ecdh.c</file>
@@ -13347,7 +13367,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files/spi2_types.h</file>
-         <hash>b9dcab07e416578c0f0cacade0e73a728ce900044a798a968ba04aeb693daff2</hash>
+         <hash>3b14482a56e1ef36f5a2bf8cb683df08542cee81318fd08248fa4ee65d46934b</hash>
       </entry>
       <entry>
          <file>mcc_generated_files/winc/driver/source/m2m_hif.c</file>
@@ -13571,11 +13591,11 @@
       </entry>
       <entry>
          <file>mcc_generated_files/drivers/spi_master.h</file>
-         <hash>20ef701c07019e9a9793b6c82fc181418d2a0529a2c4058b4fc51b2466eb3af7</hash>
+         <hash>dddc346f793e43943d289092062b063fd093f3708201f8b2233bd232e2b6695e</hash>
       </entry>
       <entry>
          <file>mcc_generated_files/drivers/spi_master.c</file>
-         <hash>c3a3bcc340f004f73b59679fedfd7f80c96964a5695a65629837c8b1a3941e30</hash>
+         <hash>16eba0407c5730b64746fad8d0a91a3250ba6cf4377cb83485c19c65c23d66da</hash>
       </entry>
       <entry>
          <file>mcc_generated_files/cryptoauthlib/lib/atca_cfgs.h</file>

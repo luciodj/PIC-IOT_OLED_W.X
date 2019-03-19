@@ -2993,11 +2993,11 @@
   @Example
     <code>
     // Set RC6 high (1)
-    OLED_DS_SetHigh();
+    OLED_DC_SetHigh();
     </code>
 
 */
-#define OLED_DS_SetHigh()          _LATC6 = 1
+#define OLED_DC_SetHigh()          _LATC6 = 1
 /**
   @Summary
     Sets the GPIO pin, RC6, low using LATC6.
@@ -3017,11 +3017,11 @@
   @Example
     <code>
     // Set RC6 low (0)
-    OLED_DS_SetLow();
+    OLED_DC_SetLow();
     </code>
 
 */
-#define OLED_DS_SetLow()           _LATC6 = 0
+#define OLED_DC_SetLow()           _LATC6 = 0
 /**
   @Summary
     Toggles the GPIO pin, RC6, using LATC6.
@@ -3041,11 +3041,11 @@
   @Example
     <code>
     // Toggle RC6
-    OLED_DS_Toggle();
+    OLED_DC_Toggle();
     </code>
 
 */
-#define OLED_DS_Toggle()           _LATC6 ^= 1
+#define OLED_DC_Toggle()           _LATC6 ^= 1
 /**
   @Summary
     Reads the value of the GPIO pin, RC6.
@@ -3067,11 +3067,11 @@
     uint16_t portValue;
 
     // Read RC6
-    postValue = OLED_DS_GetValue();
+    postValue = OLED_DC_GetValue();
     </code>
 
 */
-#define OLED_DS_GetValue()         _RC6
+#define OLED_DC_GetValue()         _RC6
 /**
   @Summary
     Configures the GPIO pin, RC6, as an input.
@@ -3091,11 +3091,11 @@
   @Example
     <code>
     // Sets the RC6 as an input
-    OLED_DS_SetDigitalInput();
+    OLED_DC_SetDigitalInput();
     </code>
 
 */
-#define OLED_DS_SetDigitalInput()  _TRISC6 = 1
+#define OLED_DC_SetDigitalInput()  _TRISC6 = 1
 /**
   @Summary
     Configures the GPIO pin, RC6, as an output.
@@ -3115,11 +3115,11 @@
   @Example
     <code>
     // Sets the RC6 as an output
-    OLED_DS_SetDigitalOutput();
+    OLED_DC_SetDigitalOutput();
     </code>
 
 */
-#define OLED_DS_SetDigitalOutput() _TRISC6 = 0
+#define OLED_DC_SetDigitalOutput() _TRISC6 = 0
 
 /**
     Section: Function Prototypes

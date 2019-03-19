@@ -29,8 +29,10 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include "../spi1_driver.h"
+#include "../spi2_driver.h"
 
 typedef enum { 
+    OLED,
     WINC
 } spi_master_configurations_t;
 
