@@ -53,6 +53,8 @@
 #include "mcc_generated_files/sensors_handling.h"
 #include "mcc_generated_files/cloud/cloud_service.h"
 #include "mcc_generated_files/debug_print.h"
+#include "oled.h"
+uint8_t OLED_Timer = 0;
 
 //This handles messages published from the MQTT server when subscribed
 void receivedFromCloud(uint8_t *topic, uint8_t *payload)
@@ -70,12 +72,11 @@ void receivedFromCloud(uint8_t *topic, uint8_t *payload)
     debug_printer(SEVERITY_NONE, LEVEL_NORMAL, "payload: %s", payload);
 }
 
-// This will get called every 1 second only while we have a valid Cloud connection
+// This will get called every CFG_SEND_INTERVAL only while we have a valid Cloud connection
 void sendToCloud(void)
 {
    static char json[70];
 
-   // This part runs every CFG_SEND_INTERVAL seconds
    int rawTemperature = SENSORS_getTempValue();
    int light = SENSORS_getLightValue();
    int len = sprintf(json, "{\"Light\":%d,\"Temp\":\"%d.%02d\"}", light,rawTemperature/100,abs(rawTemperature)%100);
@@ -94,11 +95,14 @@ void sendToCloud(void)
  */
 int main(void)
 {
-    // initialize the device
     SYSTEM_Initialize();
     application_init();
-    spiMaster[OLED].spiOpen();
-    
+    OLED_init();
+
+    OLED_Clear();
+    OLED_SetScale(2, 4); OLED_Puts(0,0, "PIC-IoT");
+    OLED_Timer = OLED_TIMEOUT;
+
     while (1)
     {
         // Add your application code

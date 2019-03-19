@@ -67,15 +67,15 @@ void PIN_MANAGER_Initialize (void)
      * Setting the Output Latch SFR(s)
      ***************************************************************************/
     LATA = 0x0001;
-    LATB = 0x0010;
+    LATB = 0x8010;
     LATC = 0x0138;
 
     /****************************************************************************
      * Setting the GPIO Direction SFR(s)
      ***************************************************************************/
     TRISA = 0x7E90;
-    TRISB = 0xFFED;
-    TRISC = 0x02C0;
+    TRISB = 0x7FED;
+    TRISC = 0x0280;
 
     /****************************************************************************
      * Setting the Weak Pull Up and Weak Pull Down SFR(s)
@@ -107,14 +107,14 @@ void PIN_MANAGER_Initialize (void)
      ***************************************************************************/
     __builtin_write_OSCCONL(OSCCON & 0xbf); // unlock PPS
 
-    RPOR13bits.RP27R = 0x000B;    //RA1->SPI2:SCK2OUT
-    RPINR22bits.SDI2R = 0x0000;    //RB0->SPI2:SDI2
-    RPOR8bits.RP16R = 0x0007;    //RC0->SPI1:SDO1
-    RPINR20bits.SDI1R = 0x001F;    //RA13->SPI1:SDI1
     RPOR12bits.RP24R = 0x0003;    //RC8->UART1:U1TX
-    RPOR9bits.RP18R = 0x0008;    //RC2->SPI1:SCK1OUT
-    RPOR0bits.RP1R = 0x000A;    //RB1->SPI2:SDO2
+    RPOR8bits.RP16R = 0x0007;    //RC0->SPI1:SDO1
+    RPINR22bits.SDI2R = 0x0000;    //RB0->SPI2:SDI2
     RPINR18bits.U1RXR = 0x0019;    //RC9->UART1:U1RX
+    RPOR0bits.RP1R = 0x000A;    //RB1->SPI2:SDO2
+    RPINR20bits.SDI1R = 0x001F;    //RA13->SPI1:SDI1
+    RPOR13bits.RP27R = 0x000B;    //RA1->SPI2:SCK2OUT
+    RPOR9bits.RP18R = 0x0008;    //RC2->SPI1:SCK1OUT
 
     __builtin_write_OSCCONL(OSCCON | 0x40); // lock PPS
 
