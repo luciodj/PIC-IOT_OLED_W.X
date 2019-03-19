@@ -59,7 +59,7 @@ void receivedFromCloud(uint8_t *topic, uint8_t *payload)
 {
     char *toggleToken = "\"toggle\":";
     char *subString;
-    
+
     if ((subString = strstr((char*)payload, toggleToken)))
     {
         LED_holdYellowOn( subString[strlen(toggleToken)] == '1' );
@@ -74,7 +74,7 @@ void receivedFromCloud(uint8_t *topic, uint8_t *payload)
 void sendToCloud(void)
 {
    static char json[70];
-         
+
    // This part runs every CFG_SEND_INTERVAL seconds
    int rawTemperature = SENSORS_getTempValue();
    int light = SENSORS_getLightValue();
@@ -87,6 +87,7 @@ void sendToCloud(void)
 }
 
 #include "mcc_generated_files/application_manager.h"
+#include "mcc_generated_files/drivers/spi_master.h"
 
 /*
                          Main application
@@ -96,7 +97,8 @@ int main(void)
     // initialize the device
     SYSTEM_Initialize();
     application_init();
-
+    spiMaster[OLED].spiOpen();
+    
     while (1)
     {
         // Add your application code

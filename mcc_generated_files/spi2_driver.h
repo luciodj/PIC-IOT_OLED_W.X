@@ -20,36 +20,32 @@
     TERMS.
 */
 
-#ifndef _SPI_MASTER_H
-#define _SPI_MASTER_H
+#ifndef SPI2_DRIVER_H
+#define SPI2_DRIVER_H
 
-/**
-  Section: Included Files
- */
+#include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
-#include "../spi1_driver.h"
-#include "../spi2_driver.h"
+#include <stdio.h>
+#include "spi2_types.h"
 
-typedef enum { 
-    OLED,
-    WINC
-} spi_master_configurations_t;
+#define INLINE  inline 
 
-typedef struct {    void (*spiClose)(void);
-                    bool (*spiOpen)(void);
-                    uint8_t (*exchangeByte)(uint8_t b);
-                    void (*exchangeBlock)(void * block, size_t blockSize);
-                    void (*writeBlock)(void * block, size_t blockSize);
-                    void (*readBlock)(void * block, size_t blockSize);
-                    void (*writeByte)(uint8_t byte);
-                    uint8_t (*readByte)(void);
-                    void (*setSpiISR)(void(*handler)(void));
-                    void (*spiISR)(void);
-} spi_master_functions_t;
+/* arbitration interface */
+INLINE void spi2_close(void);
 
-extern const spi_master_functions_t spiMaster[];
+bool spi2_open(spi2_modes spiUniqueConfiguration);
+/* SPI native data exchange function */
+uint8_t spi2_exchangeByte(uint8_t b);
+/* SPI Block move functions }(future DMA support will be here) */
+void spi2_exchangeBlock(void *block, size_t blockSize);
+void spi2_writeBlock(void *block, size_t blockSize);
+void spi2_readBlock(void *block, size_t blockSize);
 
-inline bool spi_master_open(spi_master_configurations_t config);   //for backwards compatibility
+void spi2_writeByte(uint8_t byte);
+uint8_t spi2_readByte(void);
 
-#endif	// _SPI_MASTER_H
+void spi2_isr(void);
+void spi2_setSpiISR(void(*handler)(void));
+
+#endif // SPI2_DRIVER_H
