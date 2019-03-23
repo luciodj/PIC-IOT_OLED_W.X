@@ -202,6 +202,7 @@
         <itemPath>mcc_generated_files/spi2_driver.h</itemPath>
         <itemPath>mcc_generated_files/spi2_types.h</itemPath>
       </logicalFolder>
+      <itemPath>oled_config.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
