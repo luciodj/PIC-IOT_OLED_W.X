@@ -52,7 +52,9 @@
 #include "mcc_generated_files/led.h"
 #include "mcc_generated_files/sensors_handling.h"
 #include "mcc_generated_files/cloud/cloud_service.h"
+#include "mcc_generated_files/application_manager.h"
 #include "mcc_generated_files/debug_print.h"
+
 #include "oled.h"
 uint8_t OLED_Timer = 0;
 
@@ -60,7 +62,6 @@ uint8_t OLED_Timer = 0;
 void receivedFromCloud(uint8_t *topic, uint8_t *payload)
 {
     char *pT, c;
-	LED_flashRed();
 
     if ((pT = strstr((char*)payload, "text1\":\""))){
         pT+=8;
@@ -98,8 +99,7 @@ void sendToCloud(void)
     }
 }
 
-#include "mcc_generated_files/application_manager.h"
-#include "mcc_generated_files/drivers/spi_master.h"
+//#include "mcc_generated_files/drivers/spi_master.h"
 
 /*
                          Main application
@@ -108,8 +108,8 @@ int main(void)
 {
     SYSTEM_Initialize();
     application_init();
-    OLED_init();
 
+    OLED_init();
     OLED_Clear();
     OLED_SetScale(2, 4); OLED_Puts(0,0, "PIC-IoT");
     OLED_Timer = OLED_TIMEOUT;

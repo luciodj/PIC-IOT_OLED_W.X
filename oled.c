@@ -3,7 +3,6 @@
  *      with scalable font size
  */
 #include "oled.h"
-#include "mcc_generated_files/delay.h"
 
 #define SSD1306_DISPLAYOFF          0xAE
 #define SSD1306_SETDISPLAYCLOCKDIV  0xD5
